@@ -7,7 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.ResultsItem
 import com.muramsyah.gitsid.movieapp.databinding.FragmentHomeBinding
+import com.muramsyah.gitsid.movieapp.ui.adapter.HomeHorizontalAdapter
+import com.muramsyah.gitsid.movieapp.ui.adapter.HomeVerticalAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,12 +40,32 @@ class HomeFragment : Fragment() {
 
     private fun initViewModel() {
         viewModel.moviePopular.observe(viewLifecycleOwner, {
-            Log.d("moviePopular", it.toString())
+            showMoviePopular(it)
         })
 
         viewModel.movieLatest.observe(viewLifecycleOwner, {
-            Log.d("movieLatest", it.toString())
+            showMovieLatest(it)
         })
+    }
+
+    private fun showMoviePopular(data: List<ResultsItem>) {
+        val adapter = HomeVerticalAdapter(data)
+
+        with(binding.rvMovieVertical) {
+            setAdapter(adapter)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun showMovieLatest(data: List<ResultsItem>) {
+        val adapter = HomeHorizontalAdapter(data)
+
+        with(binding.rvMovieHorizontal) {
+            setAdapter(adapter)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+        }
     }
 
     override fun onDestroy() {

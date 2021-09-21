@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muramsyah.gitsid.movieapp.BuildConfig
 import com.muramsyah.gitsid.movieapp.data.source.remote.response.ApiService
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.GenreResponse
 import com.muramsyah.gitsid.movieapp.data.source.remote.response.MovieResponse
 import com.muramsyah.gitsid.movieapp.data.source.remote.response.ResultsItem
 import retrofit2.Call

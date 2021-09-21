@@ -14,4 +14,9 @@ interface ApiService {
     fun getMoviePopular(
         @Query("api_key") apiKey: String
     ): Call<MovieResponse>
+
+    @GET("genre/movie/list")
+    fun getMovieGenre(
+        @Query("api_key") apiKey: String
+    ): Call<GenreResponse>
 }

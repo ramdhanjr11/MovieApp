@@ -11,5 +11,6 @@
 <!--  Movie Colors  -->
     <color name="primary">#141A31</color>
     <color name="primary2">#239CEC</color>
+    <color name="primary3">#6F7381</color>
     <color name="gold">#B2AF6E</color>
 </resources>

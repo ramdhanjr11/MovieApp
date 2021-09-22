@@ -136,8 +136,6 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
-                android:ellipsize="end"
-                android:maxLines="4"
                 android:text="LoremIpsum"
                 android:textColor="@color/white" />
 

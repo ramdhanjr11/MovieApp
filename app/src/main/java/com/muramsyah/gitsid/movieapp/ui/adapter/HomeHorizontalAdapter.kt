@@ -11,6 +11,8 @@ import com.muramsyah.gitsid.movieapp.databinding.ItemMovieHorizontalBinding
 @SuppressLint("NotifyDataSetChanged")
 class HomeHorizontalAdapter(val movies: List<ResultsItem>) : RecyclerView.Adapter<HomeHorizontalAdapter.ViewHolder>() {
 
+    var onItemClicked: ((ResultsItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemMovieHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
@@ -30,6 +32,10 @@ class HomeHorizontalAdapter(val movies: List<ResultsItem>) : RecyclerView.Adapte
                     .into(imgMovie)
 
                 tvTitleMovie.text = movie.title
+
+                itemView.setOnClickListener {
+                    onItemClicked?.invoke(movie)
+                }
             }
         }
     }

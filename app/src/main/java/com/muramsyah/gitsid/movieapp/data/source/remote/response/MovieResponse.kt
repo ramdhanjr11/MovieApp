@@ -65,6 +65,4 @@ data class ResultsItem(
 
 	@field:SerializedName("vote_count")
 	val voteCount: Int? = null
-) : Parcelable {
-	var genres: String? = null
-}
+) : Parcelable

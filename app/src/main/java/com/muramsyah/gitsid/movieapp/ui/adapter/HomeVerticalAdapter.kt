@@ -12,6 +12,8 @@ import com.muramsyah.gitsid.movieapp.databinding.ItemMovieVerticalBinding
 @SuppressLint("NotifyDataSetChanged")
 class HomeVerticalAdapter(val movies: List<ResultsItem>) : RecyclerView.Adapter<HomeVerticalAdapter.ViewHolder>() {
 
+    var onItemClicked: ((ResultsItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemMovieVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
@@ -32,7 +34,11 @@ class HomeVerticalAdapter(val movies: List<ResultsItem>) : RecyclerView.Adapter<
 
                 tvTitleMovie.text = movie.title
                 tvReleaseDate.text = movie.releaseDate
-                ratingBar.rating = movie.voteAverage!!.toFloat()
+                ratingBar.rating = movie.voteAverage!!.toFloat()/2f
+
+                itemView.setOnClickListener {
+                    onItemClicked?.invoke(movie)
+                }
             }
         }
     }

@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.muramsyah.gitsid.movieapp.R
 import com.muramsyah.gitsid.movieapp.data.source.remote.response.ResultsItem
 import com.muramsyah.gitsid.movieapp.databinding.FragmentHomeBinding
 import com.muramsyah.gitsid.movieapp.ui.adapter.HomeHorizontalAdapter
 import com.muramsyah.gitsid.movieapp.ui.adapter.HomeVerticalAdapter
+import com.muramsyah.gitsid.movieapp.ui.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,6 +59,12 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
         }
+
+        adapter.onItemClicked = {
+            val bundle = Bundle()
+            bundle.putInt(DetailFragment.MOVIE_ID, it.id!!)
+            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+        }
     }
 
     private fun showMovieLatest(data: List<ResultsItem>) {
@@ -65,6 +74,12 @@ class HomeFragment : Fragment() {
             setAdapter(adapter)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
+        }
+
+        adapter.onItemClicked = {
+            val bundle = Bundle()
+            bundle.putInt(DetailFragment.MOVIE_ID, it.id!!)
+            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
         }
     }
 

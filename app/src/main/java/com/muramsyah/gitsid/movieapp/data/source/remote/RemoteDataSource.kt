@@ -4,7 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muramsyah.gitsid.movieapp.BuildConfig
-import com.muramsyah.gitsid.movieapp.data.source.remote.response.*
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.ApiService
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.DetailResponse
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.MovieResponse
+import com.muramsyah.gitsid.movieapp.data.source.remote.response.ResultsItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
